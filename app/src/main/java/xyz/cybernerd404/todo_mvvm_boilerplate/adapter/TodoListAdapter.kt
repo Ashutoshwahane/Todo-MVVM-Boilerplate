@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import xyz.cybernerd404.todo_mvvm_boilerplate.databinding.TodoItemLayoutBinding
-import xyz.cybernerd404.todo_mvvm_boilerplate.model.DataResponse
+import xyz.cybernerd404.todo_mvvm_boilerplate.model.Data
+import xyz.cybernerd404.todo_mvvm_boilerplate.utils.Listener
 
 
-class TodoListAdapter() : RecyclerView.Adapter<TodoListAdapter.ViewHolder>() {
-    private var list: List<DataResponse> = arrayListOf()
+class TodoListAdapter(private val listener: Listener) : RecyclerView.Adapter<TodoListAdapter.ViewHolder>() {
+    private var list: List<Data> = arrayListOf()
 
-    fun setList(response: List<DataResponse>) {
+    fun setList(response: List<Data>) {
         this.list = response
         notifyDataSetChanged()
 
@@ -32,7 +33,10 @@ class TodoListAdapter() : RecyclerView.Adapter<TodoListAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.todoTv.text = list[position].data[position].todo
+        holder.binding.todoTv.text = list[position].todo
+        holder.binding.root.setOnClickListener {
+            listener.clickListener(list[position])
+        }
 
     }
 
