@@ -20,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="1231412312"
-        android:layout_margin="10dp"
         android:inputType="number"
         android:maxLength="10"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +30,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="password"
-        android:layout_margin="10dp"
         android:inputType="textPassword"
         android:maxLength="10"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +40,6 @@
         android:id="@+id/loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordEt" />
 
