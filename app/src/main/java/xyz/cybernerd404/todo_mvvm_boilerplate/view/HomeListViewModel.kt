@@ -55,6 +55,7 @@ class HomeListViewModel(private val repository: TodoRepository): ViewModel() {
     fun deleteTodo(todoId: String) = viewModelScope.launch {
         deleteTodoLiveData.postValue(Resource.Loading())
         val response = repository.deleteTodo(todoId)
+        
         if (response.isSuccessful){
             response.body()?.let { apiResponse ->
                 deleteTodoLiveData.postValue(Resource.Success(apiResponse))
@@ -63,5 +64,7 @@ class HomeListViewModel(private val repository: TodoRepository): ViewModel() {
             deleteTodoLiveData.postValue(Resource.Error(response.message()))
         }
     }
+
+
 
 }
